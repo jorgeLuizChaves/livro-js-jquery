@@ -5,11 +5,18 @@
     <script type="text/javascript" src="../rogus.js"></script>
     <script type="text/javascript" src="../qunit-1.13.0.js"></script>
     <script type="text/javascript">
-            test("convertTextToFloat sucess", function(){
-                const EXPECTED_VALUE = 250.00;
-                var stringValue = "R$250,00";
+            test("convertTextToFloatSuccess", function(){
+                const EXPECTED_VALUE = 28.55;
+                var stringValue = "R$28,55";
                 var resultValue = convertTextToFloat(stringValue);
-                equal(resultValue, EXPECTED_VALUE, "convert text money to float sucess");
+                equal(resultValue, EXPECTED_VALUE);
+            });
+
+            test("floatToMoneyTextSuccess", function(){
+                const EXPECTED_VALUE = "R$10,89";
+                var value = 10.89;
+                var result = floatToMoneyText(value);
+                equal(result, EXPECTED_VALUE);
             });
     </script>
 </head>
