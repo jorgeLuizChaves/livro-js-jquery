@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="../rogus.js"></script>
+    <script type="text/javascript" src="../qunit-1.13.0.js"></script>
+    <script type="text/javascript">
+            test("convertTextToFloat sucess", function(){
+                const EXPECTED_VALUE = 250.00;
+                var stringValue = "R$250,00";
+                var resultValue = convertTextToFloat(stringValue);
+                equal(resultValue, EXPECTED_VALUE, "convert text money to float sucess");
+            });
+    </script>
+</head>
+<body>
+    <div id="qunit"></div>
+</body>
+</html>
