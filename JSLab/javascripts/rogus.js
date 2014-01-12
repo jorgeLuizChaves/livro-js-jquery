@@ -43,10 +43,8 @@ function quantityModified(){
     writeTotal(calculateTotalProducts());
 }
 
-window.onload = function(){
-    var quantities = document.getElementsByClassName("quantity");
-
-    for(var cont=0; cont < quantities.length; cont++){
-        quantities[cont].onchange = quantityModified;
-    }
-};
+$(function(){
+    $(".quantity").change(function(){
+        writeTotal(calculateTotalProducts());
+    });
+});
