@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <input type="text" id="cep"></input>
+    <div id="result"></div>
+</body>
+<script type="text/javascript" src="javascripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+    var servico = "http://livro-capitulo07.herokuapp.com/hello";
+    var erro = "http://livro-capitulo07.herokuapp.com/error";
+    var postmon = "http://api.postmon.com.br/v1/cep/02083-080";
+    var postmonError = "http://api.postmon.com.br/v1/cep/02083-";
+    var postmonConsulta = "http://api.postmon.com.br/v1/cep/";
+
+    var parametros = {nome:"Jorge"};
+    $.get(servico, function(data) {
+        alert(data);
+    });
+
+    var $jqXHR = $.get(servico, parametros);
+
+    $jqXHR.done(function(data){
+        alert(data);
+    });
+
+    $.get(erro, parametros).fail(function(data){
+        alert(data.responseText);
+    });
+
+    function finish(data){
+        alert(data.logradouro);
+    }
+
+    function error(data){
+        alert(data.statusText);
+    }
+
+    $.getJSON(postmonError)
+            .done(finish).fail(error);
+
+    $(function(){
+        $("#cep").blur(function(){
+            var cep = $("#cep").val();
+
+            $.get(postmonConsulta + cep).done(function(data){
+                $("#result").text(data.logradouro);
+            });
+
+        })
+    });
+</script>
+</html>
